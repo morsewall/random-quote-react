@@ -151,7 +151,7 @@ class App extends React.Component {
       twitterLink = "https://twitter.com/intent/tweet?text=" + contentQuote;
     }
     return (
-      <div>
+      <React.Fragment>
         <div className="container">
           <div id="quote-box">
             <div className="quotable-square">
@@ -196,7 +196,7 @@ class App extends React.Component {
           </ul>
           <span>© 2019 Developed by Pat. All Rights Reserved.</span>
         </footer>
-      </div>
+      </React.Fragment>
     );
   }
 }
