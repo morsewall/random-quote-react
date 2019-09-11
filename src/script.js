@@ -105,12 +105,10 @@ class App extends React.Component {
     this.randomQuoteFunction = this.randomQuoteFunction.bind(this);
     this.chosenRandomQuoteToState = this.chosenRandomQuoteToState.bind(this);
     let quote = this.randomQuoteFunction(quotes);
-    console.log(quote);
     this.state = {
       quoteTextChosen: quote.quoteText,
       quoteAuthorChosen: quote.quoteAuthor
     };
-    console.log(this.state);
   }
   random(array) {
     return Math.floor(Math.random() * array.length);
@@ -121,14 +119,11 @@ class App extends React.Component {
   }
 
   chosenRandomQuoteToState() {
-    console.log("tapped");
     let newQuote = this.randomQuoteFunction(quotes);
-    // console.log(newQuote);
     this.setState({
       quoteTextChosen: newQuote.quoteText,
       quoteAuthorChosen: newQuote.quoteAuthor
     });
-    // console.log(this.state);
   }
 
   render() {
@@ -156,10 +151,7 @@ class App extends React.Component {
           <div id="quote-box">
             <div className="quotable-square">
               <div className="content">
-                <div id="text">
-                  {this.state.quoteTextChosen}
-                  {console.log(this.state)}
-                </div>
+                <div id="text">{this.state.quoteTextChosen}</div>
                 <div id="author" className="author">
                   {this.state.quoteAuthorChosen}
                 </div>
@@ -171,7 +163,7 @@ class App extends React.Component {
                 className="new-quote"
                 onClick={this.chosenRandomQuoteToState}
               >
-                {console.log(this.state)}Get New Quote
+                Get New Quote
               </button>
               <button className="tweet-quote">
                 <a id="tweet-quote" href={twitterLink} target="_blank">
