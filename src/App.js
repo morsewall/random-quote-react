@@ -3,10 +3,10 @@ import getRandomQuote from "./services/getRandomQuote";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.random = this.random.bind(this);
-    this.randomQuoteFunction = this.randomQuoteFunction.bind(this);
+    // this.random = this.random.bind(this);
+    this.getRandomQuote = this.getRandomQuote.bind(this);
     this.chosenRandomQuoteToState = this.chosenRandomQuoteToState.bind(this);
-    let quote = this.randomQuoteFunction();
+    let quote = this.getRandomQuote();
     console.log(quote);
     this.state = {
       quoteTextChosen: quote.quoteText,
