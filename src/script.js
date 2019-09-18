@@ -98,13 +98,17 @@ const quotes = [
   }
 ];
 
+//defining the stateful component. This creates the JavaScript class App that extends the React.Component class. With this, App can now access React features.
 class App extends React.Component {
   constructor(props) {
     super(props);
+    //binding the class methods defined further below. This way the class methods can use this to access properties on the class (such as state) inside the scope of the method.
     this.random = this.random.bind(this);
     this.randomQuoteFunction = this.randomQuoteFunction.bind(this);
     this.chosenRandomQuoteToState = this.chosenRandomQuoteToState.bind(this);
+    //selecting a random quote from the array
     let quote = this.randomQuoteFunction(quotes);
+    //defining the component initial state, allowing the app to display any part of it in the UI that is rendered (more on rendering further down).
     this.state = {
       quoteTextChosen: quote.quoteText,
       quoteAuthorChosen: quote.quoteAuthor
@@ -118,6 +122,7 @@ class App extends React.Component {
     return array[this.random(array)];
   }
 
+  //defining a new class method (chosenRandomQuoteToState) to update the state with a new quote
   chosenRandomQuoteToState() {
     let newQuote = this.randomQuoteFunction(quotes);
     this.setState({
@@ -126,7 +131,9 @@ class App extends React.Component {
     });
   }
 
+  //the component returns JSX, and as per code snippet below, JSX clearly represents HTML, composing the UI.
   render() {
+    //making the machine tweet
     let twitterLink;
     let quoteTextElem = this.state.quoteTextChosen;
     let quoteAuthorElem = " - " + this.state.quoteAuthorChosen;
@@ -146,6 +153,7 @@ class App extends React.Component {
       twitterLink = "https://twitter.com/intent/tweet?text=" + contentQuote;
     }
     return (
+      //as a React component can only return one single element, I’m using <React.Fragment> to add a parent tag to my JSX elements without adding an extra node to the DOM.
       <React.Fragment>
         <div className="container">
           <div id="quote-box">
@@ -193,4 +201,5 @@ class App extends React.Component {
   }
 }
 
+//placing JSX into React’s own DOM
 ReactDOM.render(<App />, document.getElementById("app"));
