@@ -1,5 +1,3 @@
-"use strict";
-
 //defining an array for the quotes
 const quotes = [
   {
